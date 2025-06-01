@@ -6,6 +6,11 @@
 
 {% block content %}
 
+<article>
+  <h1>{{ post.title }}</h1>
+  <p><small>{{post.created_date}}</small></p>
+</article>
+
 <div style="margin-top: 2rem">
   {% if previous_post %}
     <a href="{% url 'post_detail' slug=previous_post.slug %}">Previous Post</a>

@@ -12,7 +12,7 @@ def post_detail(request, slug):
     next_post = Post.objects.filter(id__gt=post.id, published=True).order_by('id').first()
     previous_post = Post.objects.filter(id__lt=post.id, published=True).order_by('-id').first()
 
-    return render(request, 'blog/post_detail.html', {
+    return render(request, 'blog/detail.html', {
         'post': post,
         'next_post': next_post,
         'previous_post': previous_post,
