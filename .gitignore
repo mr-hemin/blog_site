@@ -1,0 +1,16 @@
+# Ignore virtual environment
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Django database
+db.sqlite3
+
+# VSCode or PyCharm settings
+.vscode/
+.idea/
+
+# Environment variables (if used)
+.env
