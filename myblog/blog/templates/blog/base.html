@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}    {% endblock %}</title>
+
+     <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+    nav a { margin: 0 10px; text-decoration: none; color: blue; }
+    nav a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="{% url 'blog_index' %}">Home</a>
+</nav>
+
+<hr>
+
+{% block content %}
+<!-- Content goes here -->
+{% endblock %}
+
+
+
+</body>
+</html>
