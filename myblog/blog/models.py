@@ -6,9 +6,10 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
     content = models.TextField()
-    published_date = models.DateTimeField(default=True)
+    published_date = models.DateTimeField()
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    published = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
