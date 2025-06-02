@@ -5,6 +5,9 @@ db.sqlite3
 /media/
 /media/*
 
+# But keep the .gitkeep file
+!/media/.gitkeep
+
 # Ignore Django migration history
 **/migrations/*.pyc
 **/migrations/__pycache__/
