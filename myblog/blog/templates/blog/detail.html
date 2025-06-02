@@ -9,6 +9,12 @@
 <article>
   <h1>{{ post.title }}</h1>
   <p><small>{{post.created_date}}</small></p>
+
+  {% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 100%; height: auto;">
+  {% endif %}
+
+    <div>{{ post.content| linebreaks }}</div>
 </article>
 
 <div style="margin-top: 2rem">
