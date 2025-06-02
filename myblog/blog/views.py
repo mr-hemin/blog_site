@@ -1,10 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.db.models import Q
 
 
 def index(request):
-    posts = Post.objects.filter(published=True).order_by('-created_date')
-    return render(request, 'blog/index.html', {'posts': posts})
+    query = request.GET.get("q", "")
+    posts = Post.objects.all()
+    if query:
+        posts = posts.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        )
+
+    return render(request, 'blog/index.html', {'posts': posts, 'query': query})
 
 
 def post_detail(request, slug):

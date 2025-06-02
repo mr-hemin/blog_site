@@ -13,6 +13,11 @@
 <body>
 <nav>
   <a href="{% url 'blog_index' %}">Home</a>
+    <form method="get" action="{% url 'blog_index' %}" style="margin-top: 1rem;">
+        <input type="text" name="q" placeholder="🔍 Search..." value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+
+    </form>
 </nav>
 
 <hr>

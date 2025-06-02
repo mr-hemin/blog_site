@@ -1,11 +1,15 @@
 {% extends "blog/base.html" %}
 
 {% block title %}
-My Blog
+Blog
 {% endblock %}
 
 {% block content %}
-<h1>My Blog</h1>
+<h1>Blog Posts</h1>
+    {% if query %}
+     <p>🔍 Search results for "<strong>{{ query }}</strong>":</p>
+    {% endif %}
+
 
 <ul>
     {% for post in posts %}
@@ -17,7 +21,12 @@ My Blog
             <small>{{ post.created_date }}</small>
         </li>
 
+        {% empty %}
+        <p>😢 No posts found.</p>
+
      {% endfor %}
+
+
 
 </ul>
 
