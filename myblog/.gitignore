@@ -1,16 +1,31 @@
-# Ignore virtual environment
-env/
-
-# Python bytecode
-__pycache__/
-*.py[cod]
-
-# Django database
+# Ignore SQLite database
 db.sqlite3
 
-# VSCode or PyCharm settings
+# Ignore media/uploads
+/media/
+/media/*
+
+# Ignore Django migration history
+**/migrations/*.pyc
+**/migrations/__pycache__/
+/**/migrations/*.py
+
+# Ignore __pycache__ folders
+__pycache__/
+/**/__pycache__/
+
+# Ignore environment files (optional)
+.env
+*.env
+
+# Ignore VSCode or PyCharm project settings (optional)
 .vscode/
 .idea/
 
-# Environment variables (if used)
-.env
+# Ignore compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment
+venv/
