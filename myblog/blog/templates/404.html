@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    404 Not Found
+{% endblock %}
+
+{% block content %}
+    <h1>Page not found (404)</h1>
+    <p>Sorry, the page you're looking for doesn't exist.</p>
+    <a href="{% url 'blog_index' %}" class="btn btn-primary">Go to Homepage</a>
+{% endblock %}

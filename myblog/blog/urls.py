@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import index, post_detail, category_posts, about, contact
+from django.conf.urls import handler404
 
 
 urlpatterns = [
@@ -9,3 +10,5 @@ urlpatterns = [
     path("/about/", about, name='about'),
     path("/contact/", contact, name='contact'),
 ]
+
+handler404 = "blog.views.custom_404"
