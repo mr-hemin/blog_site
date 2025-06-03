@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CommentForm
-from .models import Post, Category
+from .models import Post, Category, Tag
 from django.db.models import Q
 from django.core.paginator import Paginator
 
@@ -62,3 +62,9 @@ def contact(request):
 
 def custom_404(request, exception):
     return render(request, "404.html", status=404)
+
+
+def tag_posts(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    posts = Post.objects.filter(tags=tag, published=True)
+    return render(request, "blog/tag_posts.html", {'posts': posts, 'tag': tag})

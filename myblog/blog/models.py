@@ -1,5 +1,14 @@
 from django.db import models
 from django.utils.text import slugify
+from pip._vendor.rich.markup import Tag
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -12,6 +21,7 @@ class Post(models.Model):
     published = models.BooleanField(default=True)
     image = models.ImageField(upload_to='blog_images', blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
