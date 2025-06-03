@@ -11,6 +11,7 @@ class Post(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=True)
     image = models.ImageField(upload_to='blog_images', blank=True, null=True)
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -19,3 +20,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name

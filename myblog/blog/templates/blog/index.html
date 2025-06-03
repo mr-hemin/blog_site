@@ -17,6 +17,9 @@ Blog
             <a href="{% url 'post_detail'  slug=post.slug %}">
                 {{ post.title }}
             </a>
+                {% if post.category %}
+                 <p>Category: <a href="{% url 'category_posts' slug=post.category.slug %}">{{ post.category.name }}</a></p>
+                {% endif %}
             <br>
             <small>{{ post.created_date }}</small>
         </li>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, Category
 from django.db.models import Q
 
 
@@ -24,3 +24,10 @@ def post_detail(request, slug):
         'next_post': next_post,
         'previous_post': previous_post,
     })
+
+
+def category_posts(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    posts = Post.objects.filter(category=category)
+
+    return render(request, "blog/category_posts.html", {'posts': posts, 'category': category})

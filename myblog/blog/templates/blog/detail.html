@@ -10,6 +10,10 @@
   <h1>{{ post.title }}</h1>
   <p><small>{{post.created_date}}</small></p>
 
+    {% if post.category %}
+    <p>Category: <a href="{% url 'category_posts' slug=post.category.slug %}">{{ post.category.name }}</a></p>
+    {% endif %}
+
   {% if post.image %}
     <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 100%; height: auto;">
   {% endif %}
