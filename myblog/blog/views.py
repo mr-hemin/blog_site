@@ -1,5 +1,5 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-
 from .forms import CommentForm
 from .models import Post, Category
 from django.db.models import Q
@@ -33,6 +33,7 @@ def post_detail(request, slug):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
+            messages.success(request, "Your comment has been submitted successfully")
             return redirect('post_detail', slug=post.slug)
 
     form = CommentForm()

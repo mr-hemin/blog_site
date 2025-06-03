@@ -29,6 +29,7 @@
   </style>
 </head>
 <body>
+
 <nav>
   <a href="{% url 'blog_index' %}">Home</a>
     <form method="get" action="{% url 'blog_index' %}">
@@ -40,12 +41,24 @@
 
 <hr>
 
+
+<div>
+    {% for message in messages %}
+        <div class="alter alter-success">{{ message }}</div>
+    {% endfor %}
+</div>
+
+<hr>
+
 <div class="container">
 
     <div class="main">
       {% block content %}
       {% endblock %}
     </div>
+
+
+
 
     <div class="sidebar">
       {% load blog_tags %}
