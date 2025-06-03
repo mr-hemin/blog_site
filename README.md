@@ -53,3 +53,8 @@ Admins can create, edit and publish blog posts with images.
  - python manage.py runserver
 
  - Open http://127.0.0.1:8000 in your browser.
+
+## Using Custom 404 page:
+ First in setting.py: 
+ - set DEBUG = False
+ - ALLOWED_HOSTS = ['localhost', '127.0.0.1']
