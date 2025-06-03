@@ -31,7 +31,10 @@
 <body>
 
 <nav>
-  <a href="{% url 'blog_index' %}">Home</a>
+    <a href="{% url 'blog_index' %}">Home</a> |
+    <a href="{% url 'about' %}">About</a> |
+    <a href="{% url 'contact' %}">Contact</a>
+
     <form method="get" action="{% url 'blog_index' %}">
         <input type="text" name="q" placeholder="🔍 Search..." value="{{ request.GET.q }}">
         <button type="submit">Search</button>

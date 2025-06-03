@@ -50,3 +50,11 @@ def category_posts(request, slug):
     posts = Post.objects.filter(category=category)
 
     return render(request, "blog/category_posts.html", {'posts': posts, 'category': category})
+
+
+def about(request):
+    return render(request, "blog/about.html")
+
+
+def contact(request):
+    return render(request, "blog/contact.html")
