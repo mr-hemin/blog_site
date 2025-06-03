@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+
+from .forms import CommentForm
 from .models import Post, Category
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -23,13 +25,22 @@ def index(request):
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, published=True)
-    next_post = Post.objects.filter(id__gt=post.id, published=True).order_by('id').first()
-    previous_post = Post.objects.filter(id__lt=post.id, published=True).order_by('-id').first()
+    comments = post.comments.order_by("-created_date")
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', slug=post.slug)
+
+    form = CommentForm()
 
     return render(request, 'blog/detail.html', {
         'post': post,
-        'next_post': next_post,
-        'previous_post': previous_post,
+        'comments': comments,
+        'form': form,
     })
 
 
