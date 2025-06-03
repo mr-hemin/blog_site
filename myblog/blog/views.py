@@ -25,7 +25,7 @@ def index(request):
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, published=True)
-    comments = post.comments.order_by("-created_date")
+    comments = post.comments.filter(is_approved=True).order_by('-created_date')
 
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -33,7 +33,7 @@ def post_detail(request, slug):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            messages.success(request, "Your comment has been submitted successfully")
+            messages.success(request, "Your comment has been submitted and is awaiting approval.")
             return redirect('post_detail', slug=post.slug)
 
     form = CommentForm()

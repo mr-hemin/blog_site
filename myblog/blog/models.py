@@ -35,6 +35,7 @@ class Comment(models.Model):
     writer_name = models.CharField(max_length=100)
     text = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+    is_approved = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Comment by {self.writer_name}"
